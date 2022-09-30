@@ -1,11 +1,14 @@
 import React from 'react'
-import Nav from '../components/Nav'
+import Popular from '../components/Popular'
+import Searchbar from '../components/Searchbar'
 
 function Home() {
   return (
     <div>
     
-        <h3 style={{color: 'white'}}>Home</h3>
+        <h3>Home</h3>
+        <Searchbar />
+        <Popular />
     </div>
   )
 }

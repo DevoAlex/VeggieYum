@@ -15,7 +15,7 @@ function Nav() {
 
   const showSidebar = () => {
     setIsOpen(!isOpen);
-    console.log(isOpen);
+    
   };
 
   return (
@@ -23,6 +23,9 @@ function Nav() {
       <Navbar>
         <Link to="#">
           <Bars onClick={showSidebar} />
+        </Link>
+        <Link to='/'>
+          <h2>Title here</h2>
         </Link>
       </Navbar>
       {isOpen ? (
@@ -69,7 +72,7 @@ const Navbar = styled.div`
   display: flex;
   color: white;
   align-items: center;
-  justify-content: space-between;
+  gap: 20px;
   margin: 0px 20px;
 `;
 
@@ -80,6 +83,7 @@ const SSidebar = styled.div`
   top: 0px;
   left: 0px;
   width: 200px;
+  z-index: 1;
   left: ${props => props.isOpen ? '0' : '-100%'};
   animation: showSidebar .4s;
   @keyframes showSidebar {
