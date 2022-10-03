@@ -100,7 +100,7 @@ const SSidebar = styled.div`
 const Bars = styled(FaBars)`
   height: 25px;
   width: 30px;
-  color: white;
+ 
   cursor: pointer;
   text-align: center;
 `;

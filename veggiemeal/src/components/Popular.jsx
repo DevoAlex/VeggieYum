@@ -3,9 +3,11 @@ import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css/skyblue";
 import axios from "axios";
+import LoadingSpinner from "./LoadingSpinner";
 
 function Popular() {
   const [popular, setPopular] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getPopular = async () => {
     const check = localStorage.getItem("popular");
@@ -13,16 +15,24 @@ function Popular() {
     if (check) {
       setPopular(JSON.parse(check));
     } else {
-      const api = await axios
-        .get(
-          `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&tags=vegetarian&number=10`
-        )
-        .then((res) => {
-          const data = res.data.recipes;
-          console.log(data);
-          localStorage.setItem("popular", JSON.stringify(data));
-          setPopular(data);
-        });
+      setIsLoading(true);
+      try {
+        await axios
+          .get(
+            `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&tags=vegetarian&number=10`
+          )
+          .then((res) => {
+            const data = res.data.recipes;
+
+            localStorage.setItem("popular", JSON.stringify(data));
+            setPopular(data);
+          });
+      } catch (error) {
+        console.log(error);
+      }
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
     }
   };
 
@@ -33,30 +43,36 @@ function Popular() {
   return (
     <Wrapper>
       <h3>Popular recipes</h3>
-      <Splide
-        options={{
-          type: "loop",
-          arrows: false,
-          pagination: false,
-          autoplay: true,
-          interval: 2500,
-          pauseOnHover: false,
-          resetProgress: false,
-          gap: 1,
-        }}
-      >
-        {popular.map((recipe) => {
-          return (
-            <SplideSlide key={recipe.id}>
-              <Card>
-                <p>{recipe.title}</p>
-                <img src={recipe.image} alt={recipe.title} />
-                <Gradient />
-              </Card>
-            </SplideSlide>
-          );
-        })}
-      </Splide>
+      {isLoading === true ? (
+        <div>
+          <LoadingSpinner />
+        </div>
+      ) : (
+        <Splide
+          options={{
+            type: "loop",
+            arrows: false,
+            pagination: false,
+            autoplay: true,
+            interval: 2500,
+            pauseOnHover: false,
+            resetProgress: false,
+            gap: 1,
+          }}
+        >
+          {popular.map((recipe) => {
+            return (
+              <SplideSlide key={recipe.id}>
+                <Card>
+                  <p>{recipe.title}</p>
+                  <img src={recipe.image} alt={recipe.title} />
+                  <Gradient />
+                </Card>
+              </SplideSlide>
+            );
+          })}
+        </Splide>
+      )}
     </Wrapper>
   );
 }

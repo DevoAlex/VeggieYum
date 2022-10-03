@@ -1,16 +1,30 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function Searchbar() {
-  return (
-    <Sform>
-      <div>
-      <FaSearch />
-        <input type="text" placeholder="Search your next recipe..." />
-      </div>
-    </Sform>
-  );
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    navigate("/searched/" + query);
+  };
+
+
+return (
+  <Sform onSubmit={submitHandler}>
+    <div>
+      <FaSearch onClick={submitHandler} />
+      <input
+        type="text"
+        placeholder="Search your next recipe..."
+        onChange={(e) => setQuery(e.target.value)}
+      />
+    </div>
+  </Sform>
+);
 }
 
 const Sform = styled.form`
