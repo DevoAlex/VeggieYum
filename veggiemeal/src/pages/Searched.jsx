@@ -17,7 +17,6 @@ function Searched() {
           `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}`
         )
         .then((res) => {
-          console.log(res.data.results);
           setSearchedRecipes(res.data.results);
         });
     } catch (error) {
