@@ -3,16 +3,18 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { Link } from "react-router-dom";
+import Searchbar from "../components/Searchbar";
 
 function Searched() {
   const [searchedRecipes, setSearchedRecipes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   let params = useParams();
 
-  const getSearched = (name) => {
+  const getSearched = async (name) => {
     setIsLoading(true);
     try {
-      axios
+      await axios
         .get(
           `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}`
         )
@@ -39,16 +41,21 @@ function Searched() {
           <LoadingSpinner />
         </div>
       ) : (
-        <Grid>
-          {searchedRecipes.map((item) => {
-            return (
-              <Card key={item.id}>
-                <img src={item.image} alt={item.title} />
-                <h4>{item.title}</h4>
-              </Card>
-            );
-          })}
-        </Grid>
+        <div>
+          <Searchbar />
+          <Grid>
+            {searchedRecipes.map((item) => {
+              return (
+                <Link to={"/recipe/" + item.id}>
+                  <Card key={item.id}>
+                    <img src={item.image} alt={item.title} />
+                    <h4>{item.title}</h4>
+                  </Card>
+                </Link>
+              );
+            })}
+          </Grid>
+        </div>
       )}
     </div>
   );

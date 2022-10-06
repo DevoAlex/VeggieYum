@@ -30,35 +30,35 @@ function Nav() {
       </Navbar>
       {isOpen ? (
         <SSidebar isOpen={isOpen} onClick={showSidebar}>
-          <SSlink to="#">
+          <Slink to="#">
             <AiOutlineClose style={{height: '20px', width: '20px'}}/>
             <p>Close</p>
-          </SSlink>
+          </Slink>
 
-          <SSlink to="/">
+          <Slink to="/">
           <img src={home} />
             <p>Home</p>
-          </SSlink>
+          </Slink>
 
-          <SSlink to="/saved">
+          <Slink to="/saved">
           <img src={star} />
             <p>Saved</p>
-          </SSlink>
+          </Slink>
 
-          <SSlink to="/vegan">
+          <Slink to="/vegan">
           <img src={vegan} />
             <p>Vegan</p>
-          </SSlink>
+          </Slink>
 
-          <SSlink to="/glutenfree">
+          <Slink to="/glutenfree">
           <img src={glutenFree} />
             <p>Gluten</p>
-          </SSlink>
+          </Slink>
 
-          <SSlink to="/fast">
+          <Slink to="/fast">
           <img src={fast} />
             <p>Fast</p>
-          </SSlink>
+          </Slink>
         </SSidebar>
       ) : (
         ""
@@ -105,7 +105,7 @@ const Bars = styled(FaBars)`
   text-align: center;
 `;
 
-const SSlink = styled(Link)`
+const Slink = styled(Link)`
 display: flex;
 align-items: center;
 gap: 10px;

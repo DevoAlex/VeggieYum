@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { Link } from "react-router-dom";
+import Searchbar from "../components/Searchbar";
 
 function GlutenFree() {
   const [glutenFree, setGlutenFree] = useState([]);
@@ -21,7 +23,7 @@ function GlutenFree() {
           )
           .then((res) => {
             const data = res.data.recipes;
-            console.log(data)
+            console.log(data);
             localStorage.setItem("gluten", JSON.stringify(data));
             setGlutenFree(data);
           });
@@ -46,16 +48,21 @@ function GlutenFree() {
           <LoadingSpinner />
         </div>
       ) : (
+        <div>
+        <Searchbar />
         <Grid>
           {glutenFree.map((item) => {
             return (
-              <Card key={item.id}>
-                <img src={item.image} alt={item.title} />
-                <h4>{item.title}</h4>
-              </Card>
+              <Link to={"/recipe/" + item.id} key={item.id}>
+                <Card>
+                  <img src={item.image} alt={item.title} />
+                  <h4>{item.title}</h4>
+                </Card>
+              </Link>
             );
           })}
         </Grid>
+        </div>
       )}
     </div>
   );
@@ -81,5 +88,4 @@ const Card = styled.div`
   }
 `;
 
-
-export default GlutenFree
+export default GlutenFree;

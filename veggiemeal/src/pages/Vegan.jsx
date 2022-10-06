@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { Link } from "react-router-dom";
+import Searchbar from "../components/Searchbar";
 
 function Vegan() {
   const [vegan, setVegan] = useState([]);
@@ -45,16 +47,21 @@ function Vegan() {
           <LoadingSpinner />
         </div>
       ) : (
-        <Grid>
-          {vegan.map((item) => {
-            return (
-              <Card key={item.id}>
-                <img src={item.image} alt={item.title} />
-                <h4>{item.title}</h4>
-              </Card>
-            );
-          })}
-        </Grid>
+        <div>
+          <Searchbar />
+          <Grid>
+            {vegan.map((item) => {
+              return (
+                <Link to={"/recipe/" + item.id} key={item.id}>
+                  <Card>
+                    <img src={item.image} alt={item.title} />
+                    <h4>{item.title}</h4>
+                  </Card>
+                </Link>
+              );
+            })}
+          </Grid>
+        </div>
       )}
     </div>
   );

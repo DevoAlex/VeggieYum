@@ -6,6 +6,7 @@ import Saved from "./Saved";
 import Vegan from "./Vegan";
 import GlutenFree from "./GlutenFree";
 import Searched from "./Searched";
+import Recipe from "./Recipe";
 
 function Pages() {
   return (
@@ -16,6 +17,7 @@ function Pages() {
       <Route path="/glutenfree" element={<GlutenFree />} />
       <Route path="/fast" element={<Fast />} />
       <Route path="/searched/:search" element={<Searched />} />
+      <Route path="/recipe/:name" element={<Recipe />} />
     </Routes>
   );
 }

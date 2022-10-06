@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { Link } from "react-router-dom";
+import Searchbar from "../components/Searchbar";
 
 function Fast() {
   const [fast, setFast] = useState([]);
@@ -46,19 +48,26 @@ function Fast() {
           <LoadingSpinner />
         </div>
       ) : (
-        <Grid>
-          {fast
-            .filter((item) => item.readyInMinutes <= 45)
-            .map((item) => {
-              return (
-                <Card key={item.id}>
-                  <img src={item.image} alt={item.title} />
-                  <h4>{item.title}</h4>
-                  <p>Ready in <strong>{item.readyInMinutes}</strong> minutes</p>
-                </Card>
-              );
-            })}
-        </Grid>
+        <div>
+          <Searchbar />
+          <Grid>
+            {fast
+              .filter((item) => item.readyInMinutes <= 45)
+              .map((item) => {
+                return (
+                  <Link to={"/recipe/" + item.id} key={item.id}>
+                    <Card>
+                      <img src={item.image} alt={item.title} />
+                      <h4>{item.title}</h4>
+                      <p>
+                        Ready in <strong>{item.readyInMinutes}</strong> minutes
+                      </p>
+                    </Card>
+                  </Link>
+                );
+              })}
+          </Grid>
+        </div>
       )}
     </div>
   );
