@@ -34,20 +34,21 @@ function Searched() {
   }, [params.search]);
 
   return (
-    <div>
+    <>
+    
       <h1>Searched</h1>
-      {isLoading === true ? (
+      {isLoading ? (
         <div>
           <LoadingSpinner />
         </div>
       ) : (
         <div>
-          <Searchbar />
+          
           <Grid>
             {searchedRecipes.map((item) => {
               return (
-                <Link to={"/recipe/" + item.id}>
-                  <Card key={item.id}>
+                <Link to={"/recipe/" + item.id} key={item.id}>
+                  <Card>
                     <img src={item.image} alt={item.title} />
                     <h4>{item.title}</h4>
                   </Card>
@@ -57,7 +58,7 @@ function Searched() {
           </Grid>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

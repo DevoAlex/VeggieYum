@@ -28,7 +28,8 @@ return (
 }
 
 const Sform = styled.form`
-  margin: 0rem 1rem;
+  margin: 1rem 1rem;
+  
   div {
     width: 100%;
     position: relative;

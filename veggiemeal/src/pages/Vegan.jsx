@@ -40,15 +40,16 @@ function Vegan() {
   }, []);
 
   return (
-    <div>
+    <>
+   
       <h1>Vegan</h1>
-      {isLoading === true ? (
+      {isLoading ? (
         <div>
           <LoadingSpinner />
         </div>
       ) : (
         <div>
-          <Searchbar />
+          
           <Grid>
             {vegan.map((item) => {
               return (
@@ -63,7 +64,7 @@ function Vegan() {
           </Grid>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

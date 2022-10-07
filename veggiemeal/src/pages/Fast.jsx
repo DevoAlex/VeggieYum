@@ -23,7 +23,6 @@ function Fast() {
           )
           .then((res) => {
             const data = res.data.recipes;
-            console.log(data);
             localStorage.setItem("fast", JSON.stringify(data));
             setFast(data);
           });
@@ -41,15 +40,16 @@ function Fast() {
   }, []);
 
   return (
-    <div>
+    <>
+    
       <h1>Fast Recipes</h1>
-      {isLoading === true ? (
+      {isLoading ? (
         <div>
           <LoadingSpinner />
         </div>
       ) : (
         <div>
-          <Searchbar />
+          
           <Grid>
             {fast
               .filter((item) => item.readyInMinutes <= 45)
@@ -69,7 +69,7 @@ function Fast() {
           </Grid>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

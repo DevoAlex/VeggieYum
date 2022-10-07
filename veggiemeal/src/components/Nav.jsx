@@ -24,9 +24,9 @@ function Nav() {
         <Link to="#">
           <Bars onClick={showSidebar} />
         </Link>
-        <Link to='/'>
-          <h2>Title here</h2>
-        </Link>
+        <Slink to='/'>
+          <Title>Veggiemeal</Title>
+        </Slink>
       </Navbar>
       {isOpen ? (
         <SSidebar isOpen={isOpen} onClick={showSidebar}>
@@ -40,9 +40,9 @@ function Nav() {
             <p>Home</p>
           </Slink>
 
-          <Slink to="/saved">
+          <Slink to="/favorites">
           <img src={star} />
-            <p>Saved</p>
+            <p>Favorites</p>
           </Slink>
 
           <Slink to="/vegan">
@@ -67,8 +67,15 @@ function Nav() {
   );
 }
 
+const Title = styled.h2`
+  font-family: 'Concert One', cursive;
+  letter-spacing: 0.1rem;
+  font-size: 1.8rem;
+  margin-left: 0.5rem;
+  color: black;
+`
+
 const Navbar = styled.div`
-  border: 1px solid red;
   display: flex;
   color: white;
   align-items: center;
@@ -80,26 +87,26 @@ const SSidebar = styled.div`
   background-color: #307351;
   position: fixed;
   height: 100%;
-  top: 0px;
-  left: 0px;
-  width: 200px;
+  top: 0rem;
+  left: 0rem;
+  width: 12.5rem;
   z-index: 1;
   left: ${props => props.isOpen ? '0' : '-100%'};
   animation: showSidebar .4s;
   @keyframes showSidebar {
     from {
       opacity: 0;
-      width: 0;
+      width: 0rem;
     }
     to {
       opacity: 1;
-      width: 200px;
+      width: 12.5rem;
     }}
 `;
 
 const Bars = styled(FaBars)`
-  height: 25px;
-  width: 30px;
+  height: 1.8rem;
+  width: 1.8rem;
  
   cursor: pointer;
   text-align: center;
@@ -108,15 +115,15 @@ const Bars = styled(FaBars)`
 const Slink = styled(Link)`
 display: flex;
 align-items: center;
-gap: 10px;
-margin-left: 15px;
+gap: 0.5rem;
+margin-left: 1rem;
+text-decoration: none;
+color: white;
 img {
-  width: 20px;
-  height: 20px;
+  width: 1.2rem;
+  height: 1.2rem;
 }
-&:hover {
-  color: white;
-}
+
 `
 
 export default Nav;

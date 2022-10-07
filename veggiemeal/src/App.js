@@ -1,15 +1,12 @@
-import "./App.css";
-import Home from "./pages/Home";
-import { BrowserRouter } from "react-router-dom";
 import Nav from "./components/Nav";
+import Searchbar from "./components/Searchbar";
 import Pages from "./pages/Pages";
-
 
 function App() {
   return (
     <>
       <Nav />
-      
+      <Searchbar />
       <Pages />
     </>
   );

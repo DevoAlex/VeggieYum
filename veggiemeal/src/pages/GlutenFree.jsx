@@ -23,7 +23,6 @@ function GlutenFree() {
           )
           .then((res) => {
             const data = res.data.recipes;
-            console.log(data);
             localStorage.setItem("gluten", JSON.stringify(data));
             setGlutenFree(data);
           });
@@ -41,30 +40,31 @@ function GlutenFree() {
   }, []);
 
   return (
-    <div>
+    <>
+   
       <h1>Gluten Free</h1>
-      {isLoading === true ? (
+      {isLoading ? (
         <div>
           <LoadingSpinner />
         </div>
       ) : (
         <div>
-        <Searchbar />
-        <Grid>
-          {glutenFree.map((item) => {
-            return (
-              <Link to={"/recipe/" + item.id} key={item.id}>
-                <Card>
-                  <img src={item.image} alt={item.title} />
-                  <h4>{item.title}</h4>
-                </Card>
-              </Link>
-            );
-          })}
-        </Grid>
+          
+          <Grid>
+            {glutenFree.map((item) => {
+              return (
+                <Link to={"/recipe/" + item.id} key={item.id}>
+                  <Card>
+                    <img src={item.image} alt={item.title} />
+                    <h4>{item.title}</h4>
+                  </Card>
+                </Link>
+              );
+            })}
+          </Grid>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

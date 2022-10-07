@@ -4,12 +4,12 @@ import Searchbar from '../components/Searchbar'
 
 function Home() {
   return (
-    <div>
+    <>
     
         <h3>Home</h3>
-        <Searchbar />
+        
         <Popular />
-    </div>
+    </>
   )
 }
 
