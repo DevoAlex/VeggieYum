@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import {BiChevronsLeft} from 'react-icons/bi'
 import {FaTrashAlt} from 'react-icons/fa'
+import Searchbar from "../components/Searchbar";
 
 function Favorites() {
   const { favRecipes } = useContext(FavoritesContext);
@@ -21,20 +22,25 @@ function Favorites() {
 
   return (
     <>
-      <h1>Favorites</h1>
+      
       {isLoading && (
-        <div>
+        <Wrapper>
           <LoadingSpinner />
-        </div>)}
+        </Wrapper>)}
        
         {!isLoading && favRecipes.length > 0 &&
-        (<div>
+        (<Wrapper>
+        <Searchbar />
+        <h2>Favorite recipes</h2>
           <Grid>
+          
             {favRecipes.map((item) => {
               return (
+                <LinkWrapper>
                 <Slink to={"/recipe/" + item.id} key={item.id}>
                   
                     <img src={item.image} alt={item.title} />
+                    </Slink>
                     <TrashWrapper>
                     <h4>{item.title}</h4>
                     <Button onClick={() => {
@@ -44,15 +50,16 @@ function Favorites() {
                       <FaTrashAlt style={{ height: '1rem', width: '1rem'}}/>
                     </Button>
                     </TrashWrapper>
-                </Slink>
+                    </LinkWrapper>
               );
             })}
           </Grid>
-        </div>)
+        </Wrapper>)
       }
 
       {!isLoading && favRecipes.length === 0 && (
         <EmptyFavorite>
+        <h2>Favorites recipes</h2>
           <h4>No favorite recipes.</h4>
           <Link to={'/'} style={{textDecoration: 'none'}}>
           
@@ -69,22 +76,13 @@ function Favorites() {
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  grid-gap: 3rem;
-  
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));  
 `;
 
 const Slink = styled(Link)`
-text-decoration: none;
-color: black;
-padding: 0rem 1rem;
   img {
     width: 100%;
     border-radius: 2rem;
-  }
-  h4 {
-    text-align: center;
-    padding: 0rem 1rem;
   }
 `;
 
@@ -92,6 +90,9 @@ const EmptyFavorite = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 2rem;
+  background-color: #01121C;
+  color: white;
   div {
     border-radius: 0.3rem;
     height: 2rem;
@@ -103,25 +104,48 @@ const EmptyFavorite = styled.div`
     color: white;
     h5 {
       font-weight: 400;
+      
     }
-    }
+  }
+  h2{
+    font-family: "Comfortaa", cursive;
+  }
 `
 
 const Button = styled.button`
-  border-radius: 0.3rem;
     height: 2rem;
     width: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(35deg, #494949, #313131);
+    background: none;
+    border: none;
     color: white;
 `
 
 const TrashWrapper = styled.div`
   display: flex;
-  gap: 3rem;
   align-items: center;
+  justify-content: space-between;
+  height: 3rem;
+  padding: 1rem;
+  h4 {
+    text-align: center;
+    color: white;
+  }
+`
+
+const LinkWrapper = styled.div`
+  padding: 1rem 1rem 0rem 1rem;
+`
+const Wrapper = styled.div`
+  background-color: #01121C;
+  padding-top: 0.1rem;
+  text-align: center;
+  font-family: "Comfortaa", cursive;
+  h2{
+    color: white;
+  }
 `
 
 export default Favorites;

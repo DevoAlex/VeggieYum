@@ -81,19 +81,21 @@ function Popular() {
 }
 
 const Wrapper = styled.div`
-  margin: 4rem 0rem;
-  margin-left: 1.2rem;
+  padding-left: 1.2rem;
+  padding-bottom: 1rem;
+  background-color: #01121C;
+  color: white;
+  padding-top: 1rem;
 `;
 
 const Card = styled.div`
   height: 15rem;
   width: 18rem;
-  border-radius: 2rem;
+  border-radius: 0.8rem;
   overflow: hidden;
   position: relative;
 
   img {
-    border-radius: 2rem;
     height: 100%;
     width: 100%;
     position: absolute;

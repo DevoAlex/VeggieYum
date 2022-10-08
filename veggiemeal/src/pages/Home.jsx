@@ -1,17 +1,29 @@
-import React from 'react'
-import Popular from '../components/Popular'
-import Searchbar from '../components/Searchbar'
+import React from "react";
+import Popular from "../components/Popular";
+import styled from "styled-components";
+import Searchbar from "../components/Searchbar";
+import Hero from "../components/Hero";
+import backgroundImage from '../images/spicy-bg.jpg'
 
 function Home() {
   return (
     <>
-    
-        
-        
-        <Popular />
+      <Wrapper>
+      <Hero />
+        <Searchbar />
+      </Wrapper>
+      <Popular />
+      
     </>
-  )
+  );
 }
 
+const Wrapper = styled.div`
+  min-height: 30rem;
+  padding-top: 3rem;
+  background: url(${backgroundImage}) no-repeat fixed;
+  background-position: top;
+  background-size: 35rem;
+`;
 
-export default Home
+export default Home;

@@ -35,28 +35,27 @@ function Searched() {
 
   return (
     <>
-    
-      <h1>Searched</h1>
       {isLoading ? (
-        <div>
+        <Wrapper>
           <LoadingSpinner />
-        </div>
+        </Wrapper>
       ) : (
-        <div>
-          
+        <Wrapper>
+          <Searchbar />
+          <h2>Searched recipes</h2>
           <Grid>
             {searchedRecipes.map((item) => {
               return (
-                <Link to={"/recipe/" + item.id} key={item.id}>
+                <Slink to={"/recipe/" + item.id} key={item.id}>
                   <Card>
                     <img src={item.image} alt={item.title} />
                     <h4>{item.title}</h4>
                   </Card>
-                </Link>
+                </Slink>
               );
             })}
           </Grid>
-        </div>
+        </Wrapper>
       )}
     </>
   );
@@ -65,21 +64,36 @@ function Searched() {
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  grid-gap: 3rem;
+  grid-gap: 1rem;
 `;
 
 const Card = styled.div`
   img {
     width: 100%;
-    border-radius: 2rem;
-  }
-  a {
-    text-decoration: none;
+    border-radius: 0.8rem;
   }
   h4 {
     text-align: center;
     padding: 1rem;
   }
+`;
+
+const Wrapper = styled.div`
+  background-color: #01121c;
+
+  padding-top: 0.1rem;
+  text-align: center;
+  h2 {
+    padding-bottom: 1rem;
+    font-family: "Comfortaa", cursive;
+    color: white;
+    padding-top: 1rem;
+  }
+`;
+const Slink = styled(Link)`
+  color: white;
+  text-decoration: none;
+  padding: 1rem 1rem 0rem 1rem;
 `;
 
 export default Searched;

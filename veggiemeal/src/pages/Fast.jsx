@@ -41,21 +41,20 @@ function Fast() {
 
   return (
     <>
-    
-      <h1>Fast Recipes</h1>
       {isLoading ? (
-        <div>
+        <Wrapper>
           <LoadingSpinner />
-        </div>
+        </Wrapper>
       ) : (
-        <div>
-          
+        <Wrapper>
+          <Searchbar />
+          <h2>Fast Recipes</h2>
           <Grid>
             {fast
               .filter((item) => item.readyInMinutes <= 45)
               .map((item) => {
                 return (
-                  <Link to={"/recipe/" + item.id} key={item.id}>
+                  <Slink to={"/recipe/" + item.id} key={item.id}>
                     <Card>
                       <img src={item.image} alt={item.title} />
                       <h4>{item.title}</h4>
@@ -63,11 +62,11 @@ function Fast() {
                         Ready in <strong>{item.readyInMinutes}</strong> minutes
                       </p>
                     </Card>
-                  </Link>
+                  </Slink>
                 );
               })}
           </Grid>
-        </div>
+        </Wrapper>
       )}
     </>
   );
@@ -82,18 +81,24 @@ const Grid = styled.div`
 const Card = styled.div`
   img {
     width: 100%;
-    border-radius: 2rem;
+    border-radius: 0.8rem;
   }
-  a {
-    text-decoration: none;
+`;
+const Wrapper = styled.div`
+  background-color: #01121c;
+  padding-top: 0.1rem;
+  text-align: center;
+  h2 {
+    padding-bottom: 1rem;
+    font-family: "Comfortaa", cursive;
+    color: white;
+    padding-top: 1rem;
   }
-  h4 {
-    text-align: center;
-    padding: 1rem;
-  }
-  p {
-    text-align: center;
-  }
+`;
+const Slink = styled(Link)`
+  color: white;
+  text-decoration: none;
+  padding: 1rem 1rem 0rem 1rem;
 `;
 
 export default Fast;

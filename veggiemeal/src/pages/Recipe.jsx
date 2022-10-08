@@ -8,6 +8,7 @@ import veganIcon from "../images/vegan-icon.png";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { FavoritesContext } from "../context/FavoritesContextProvider";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import {BsClock} from 'react-icons/bs'
 
 function Recipe() {
   const [details, setDetails] = useState({});
@@ -89,16 +90,22 @@ function Recipe() {
                 </IconImage>
               )}
             </IconImageContainer>
+            <ClockContainer>
+            <div>
+            <BsClock />
+            </div>
+            <p>{details.readyInMinutes}</p>
+            </ClockContainer>
             {favorite ? (
-              <button onClick={handleFavorite}>
+              <button onClick={handleFavorite} style={{ backgroundColor:'transparent' }}>
                 <MdFavorite
                   style={{ height: "1.5rem", width: "1.5rem", color: "red" }}
                 />
               </button>
             ) : (
-              <button onClick={handleFavorite}>
+              <button onClick={handleFavorite} style={{ backgroundColor:'transparent' }}>
                 <MdFavoriteBorder
-                  style={{ height: "1.5rem", width: "1.5rem" }}
+                  style={{ height: "1.5rem", width: "1.5rem", color:'white' }}
                 />
               </button>
             )}
@@ -136,16 +143,17 @@ function Recipe() {
 }
 
 const Wrapper = styled.div`
-  margin-top: 2.5rem;
-  margin-bottom: 5rem;
-  padding: 0rem 1rem;
+  padding: 1rem 1rem 1rem 1rem;
+  background-color: #01121c;
+  color: white;
   .active {
-    background: linear-gradient(35deg, #494949, #313131);
+    background: #EF9903;
     color: white;
   }
   h2 {
-    margin-bottom: 2rem;
-    
+    padding-bottom: 2rem;
+    font-family: "Comfortaa", cursive;
+    text-align: center;
   }
   li {
     font-size: 1.1rem;
@@ -157,6 +165,10 @@ const Wrapper = styled.div`
   p {
     margin-top: 2rem;
     font-size: 1.1rem;
+    a{
+      text-decoration: none;
+      color: orange;
+    }
   }
   img {
     width: 100%;
@@ -180,7 +192,25 @@ const IconWrapper = styled.div`
 const IconImageContainer = styled.div`
   display: flex;
   gap: 0.4rem;
+  padding-left: 0.8rem;
+  
 `;
+
+const ClockContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  div {
+    position: relative;
+    top: 18%;
+  }
+  p{
+    position: relative;
+    top: 5%;
+  }
+  
+`
 
 const IconImage = styled.div`
   margin-top: 2rem;
@@ -197,15 +227,13 @@ const Button = styled.button`
   width: 7rem;
   color: #313131;
   background: white;
-  border: 2px solid black;
+  border: none;
   margin-top: 2rem;
   margin-left: 1.3rem;
   font-weight: 600;
   border-radius: 0.3rem;
-  font-family: 'Montserrat', -apple-system, sans-serif;
+  font-family: "Comfortaa", cursive;
 `;
-const Info = styled.div`
-  margin-left: 10rem;
-`;
+
 
 export default Recipe;
