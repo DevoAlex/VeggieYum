@@ -3,9 +3,10 @@ import { FavoritesContext } from "../context/FavoritesContextProvider";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import {BiChevronsLeft} from 'react-icons/bi'
-import {FaTrashAlt} from 'react-icons/fa'
+import { BiChevronsLeft } from "react-icons/bi";
+import { FaTrashAlt } from "react-icons/fa";
 import Searchbar from "../components/Searchbar";
+import { device } from "../components/device";
 
 function Favorites() {
   const { favRecipes } = useContext(FavoritesContext);
@@ -17,55 +18,59 @@ function Favorites() {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-    }, 100);
+    }, 500);
   }, []);
 
   return (
     <>
-      
       {isLoading && (
         <Wrapper>
           <LoadingSpinner />
-        </Wrapper>)}
-       
-        {!isLoading && favRecipes.length > 0 &&
-        (<Wrapper>
-        <Searchbar />
-        <h2>Favorite recipes</h2>
+        </Wrapper>
+      )}
+
+      {!isLoading && favRecipes.length > 0 && (
+        <Wrapper>
+          <Searchbar />
+          <h2>Favorite recipes</h2>
           <Grid>
-          
             {favRecipes.map((item) => {
               return (
-                <LinkWrapper>
-                <Slink to={"/recipe/" + item.id} key={item.id}>
-                  
+                <Card>
+                  <Slink to={"/recipe/" + item.id} key={item.id}>
                     <img src={item.image} alt={item.title} />
-                    </Slink>
-                    <TrashWrapper>
+                  </Slink>
+                  <TrashWrapper>
                     <h4>{item.title}</h4>
-                    <Button onClick={() => {
-                      removeFavRecipe(item.id)
-                    }}>
-                      
-                      <FaTrashAlt style={{ height: '1rem', width: '1rem'}}/>
+                    <Button
+                      onClick={() => {
+                        removeFavRecipe(item.id);
+                      }}
+                    >
+                      <FaTrashAlt style={{ height: "1rem", width: "1rem" }} />
                     </Button>
-                    </TrashWrapper>
-                    </LinkWrapper>
+                  </TrashWrapper>
+                </Card>
               );
             })}
           </Grid>
-        </Wrapper>)
-      }
+        </Wrapper>
+      )}
 
       {!isLoading && favRecipes.length === 0 && (
         <EmptyFavorite>
-        <h2>Favorites recipes</h2>
+          <h2>Favorites recipes</h2>
           <h4>No favorite recipes.</h4>
-          <Link to={'/'} style={{textDecoration: 'none'}}>
-          
+          <Link to={"/"} style={{ textDecoration: "none" }}>
             <div>
-            <BiChevronsLeft style={{marginLeft: '1rem', height: '1.5rem', width: '1.5rem'}}/>
-                <h5>Back to Homepage</h5>
+              <BiChevronsLeft
+                style={{
+                  marginLeft: "1rem",
+                  height: "1.5rem",
+                  width: "1.5rem",
+                }}
+              />
+              <h5>Back to Homepage</h5>
             </div>
           </Link>
         </EmptyFavorite>
@@ -76,7 +81,9 @@ function Favorites() {
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));  
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 25rem));
+
+  
 `;
 
 const Slink = styled(Link)`
@@ -91,7 +98,6 @@ const EmptyFavorite = styled.div`
   flex-direction: column;
   align-items: center;
   padding-bottom: 2rem;
-  background-color: #01121C;
   color: white;
   div {
     border-radius: 0.3rem;
@@ -104,24 +110,43 @@ const EmptyFavorite = styled.div`
     color: white;
     h5 {
       font-weight: 400;
-      
     }
   }
-  h2{
+  h2 {
     font-family: "Comfortaa", cursive;
   }
-`
+
+  @media ${device.tablet} {
+    padding-top: 1.5rem;
+    h4 {
+      padding-top: 1rem;
+    }
+    div {
+      margin-top: 1rem;
+    }
+  }
+  @media ${device.desktop} {
+    padding-top: 3rem;
+    h4 {
+      padding-top: 1.5rem;
+    }
+    div {
+      margin-top: 1.5rem;
+    }
+  }
+`;
 
 const Button = styled.button`
-    height: 2rem;
-    width: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    border: none;
-    color: white;
-`
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+`;
 
 const TrashWrapper = styled.div`
   display: flex;
@@ -133,19 +158,34 @@ const TrashWrapper = styled.div`
     text-align: center;
     color: white;
   }
-`
+`;
 
-const LinkWrapper = styled.div`
-  padding: 1rem 1rem 0rem 1rem;
-`
+const Card = styled.div`
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgb(0, 0, 0, 0.4) 0px 15px 12px;
+  margin: 1rem;
+  border-radius: 1rem;
+  margin-top: 1.5rem;
+  img {
+    width: 100%;
+    border-radius: 0.8rem;
+  }
+  h4 {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  @media ${device.tablet} {
+    margin-top: 2.5rem;
+    min-height: 21rem;
+  }
+`;
 const Wrapper = styled.div`
-  background-color: #01121C;
   padding-top: 0.1rem;
   text-align: center;
   font-family: "Comfortaa", cursive;
-  h2{
+  h2 {
     color: white;
   }
-`
+`;
 
 export default Favorites;

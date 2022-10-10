@@ -22,11 +22,7 @@ function footer() {
         >
           <img src={instagramIcon} />
         </a>
-        <a 
-          href="https://github.com/DevoAlex/" 
-          target="_blank" 
-          rel="noreferrer"
-        >
+        <a href="https://github.com/DevoAlex/" target="_blank" rel="noreferrer">
           <img src={githubIcon} />
         </a>
       </SocialWrapper>
@@ -36,7 +32,7 @@ function footer() {
 }
 
 const Wrapper = styled.div`
-  background-color: #01121C;
+  background-color: #01121c;
   gap: 1rem;
   text-align: center;
   padding-top: 2rem;

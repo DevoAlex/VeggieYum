@@ -5,6 +5,8 @@ import "@splidejs/react-splide/css/skyblue";
 import axios from "axios";
 import LoadingSpinner from "./LoadingSpinner";
 import { Link } from "react-router-dom";
+import { device } from "./device";
+import { MdInbox } from "react-icons/md";
 
 function Popular() {
   const [popular, setPopular] = useState([]);
@@ -43,7 +45,7 @@ function Popular() {
 
   return (
     <Wrapper>
-      <h3>Popular recipes</h3>
+      <PopularTitle>Popular recipes</PopularTitle>
       {isLoading === true ? (
         <div>
           <LoadingSpinner />
@@ -58,7 +60,31 @@ function Popular() {
             interval: 2500,
             pauseOnHover: false,
             resetProgress: false,
-            gap: 1,
+            gap: 0.5,
+            mediaQuery: "min",
+            breakpoints: {
+              375: {
+                padding: "1rem",
+              },
+              425: {
+                padding: "2rem",
+              },
+              768: {
+                perPage: 2,
+              },
+              1024: {
+                perPage: 3,
+              },
+              1440: {
+                padding: '8%',
+                gap: '0.5em',
+                perPage: 4,
+              },
+              2560: {
+                perPage: 7,
+                padding: '-10%',
+              },
+            },
           }}
         >
           {popular.map((recipe) => {
@@ -83,7 +109,6 @@ function Popular() {
 const Wrapper = styled.div`
   padding-left: 1.2rem;
   padding-bottom: 1rem;
-  background-color: #01121C;
   color: white;
   padding-top: 1rem;
 `;
@@ -127,5 +152,18 @@ const Gradient = styled.div`
   height: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
 `;
+
+const PopularTitle = styled.h3`
+  font-family: "Comfortaa", cursive;
+
+  @media ${device.tablet} {
+    margin-left: 1rem;
+    font-size: 1.2rem;
+  }
+  @media ${device.laptopL} {
+    margin-left: 1.5rem;
+    font-size: 1.3rem;
+  }
+`
 
 export default Popular;

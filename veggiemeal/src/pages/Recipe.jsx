@@ -9,6 +9,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { FavoritesContext } from "../context/FavoritesContextProvider";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import {BsClock} from 'react-icons/bs'
+import { device } from "../components/device";
 
 function Recipe() {
   const [details, setDetails] = useState({});
@@ -70,7 +71,9 @@ function Recipe() {
         <Wrapper>
           <div>
             <h2>{details.title}</h2>
+            <span>
             <img src={details.image} alt={details.title} />
+            </span>
           </div>
           <IconWrapper>
             <IconImageContainer>
@@ -111,6 +114,7 @@ function Recipe() {
             )}
             
           </IconWrapper>
+          <span>
           <Button
             className={activeTab === "ingredients" ? "active" : ""}
             onClick={() => setActiveTab("ingredients")}
@@ -123,6 +127,7 @@ function Recipe() {
           >
             Instructions
           </Button>
+          </span>
           {activeTab === "ingredients" ? (
             <>
               <ul>
@@ -144,7 +149,7 @@ function Recipe() {
 
 const Wrapper = styled.div`
   padding: 1rem 1rem 1rem 1rem;
-  background-color: #01121c;
+  
   color: white;
   .active {
     background: #EF9903;
@@ -174,6 +179,25 @@ const Wrapper = styled.div`
     width: 100%;
     border-radius: 2rem;
   }
+  span {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media ${device.tablet} {
+    img {
+      width: 80%;
+    }
+  @media ${device.laptop} {
+    img {
+      width: 60%;
+    }
+  @media ${device.laptopL} {
+    img {
+      width: 40%;
+    }
+  }
+}}
 `;
 
 const IconWrapper = styled.div`
@@ -192,8 +216,7 @@ const IconWrapper = styled.div`
 const IconImageContainer = styled.div`
   display: flex;
   gap: 0.4rem;
-  padding-left: 0.8rem;
-  
+  padding-left: 0.8rem; 
 `;
 
 const ClockContainer = styled.div`

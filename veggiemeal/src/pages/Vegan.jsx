@@ -4,6 +4,7 @@ import axios from "axios";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { Link } from "react-router-dom";
 import Searchbar from "../components/Searchbar";
+import { device } from "../components/device";
 
 function Vegan() {
   const [vegan, setVegan] = useState([]);
@@ -70,10 +71,15 @@ function Vegan() {
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  grid-gap: 1rem;
+  @media ${device.mobileL} {
+    grid-gap: 0.5rem;
+  }
 `;
 
 const Card = styled.div`
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 19px 38px, rgb(0, 0, 0, 0.5) 0px 15px 12px;
+  border-radius: 1rem;
+  margin-top: 1.5rem;
   img {
     width: 100%;
     border-radius: 0.8rem;
@@ -81,6 +87,11 @@ const Card = styled.div`
   h4 {
     text-align: center;
     padding: 1rem;
+  }
+
+  @media ${device.tablet} {
+    margin-top: 2.5rem;
+    min-height: 21rem;
   }
 `;
 
@@ -91,8 +102,6 @@ const Slink = styled(Link)`
 `;
 
 const Wrapper = styled.div`
-  background-color: #01121c;
-
   padding-top: 0.1rem;
   text-align: center;
   h2 {
@@ -100,6 +109,15 @@ const Wrapper = styled.div`
     font-family: "Comfortaa", cursive;
     color: white;
     padding-top: 1rem;
+  }
+
+  @media ${device.tablet} {
+    margin-bottom: 2rem;
+    padding-top: 2rem;
+    h2 {
+      padding-top: 1.8rem;
+      padding-bottom: 1.8rem;
+    }
   }
 `;
 
