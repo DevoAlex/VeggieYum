@@ -1,11 +1,11 @@
 [build]
-    command = npm run build
-    base = /opt/build/VeggieYum/veggiemeal
-    commandOrigin = ui
+    command = "npm run build"
+    base = "/opt/build/VeggieYum/veggiemeal"
+    commandOrigin = "ui"
     environment = 
-        - REACT_APP_API_KEY
-    publish = /opt/build/VeggieYum/veggiemeal/public
-    publishOrigin = ui
+        "- REACT_APP_API_KEY"
+    publish = "/opt/build/VeggieYum/veggiemeal/public"
+    publishOrigin = "ui"
 
 [[redirects]]
     from = "/*"
