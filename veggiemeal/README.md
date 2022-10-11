@@ -64,6 +64,8 @@ Check out for index.html in the /build folder.
 
 ## :zap: Try it!
 
+If you want to search for your next recipe now [try VeggieYum!](https://veggieyum.netlify.app)
+ 
 ## :page_with_curl: License
 
 [MIT](https://choosealicense.com/licenses/mit/)
