@@ -11,29 +11,22 @@ function GlutenFree() {
   const [isLoading, setIsLoading] = useState(false);
 
   const getGluten = async () => {
-    const check = localStorage.getItem("gluten");
-
-    if (check) {
-      setGlutenFree(JSON.parse(check));
-    } else {
-      setIsLoading(true);
-      try {
-        await axios
-          .get(
-            `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&tags=gluten+free,vegetarian&number=10`
-          )
-          .then((res) => {
-            const data = res.data.recipes;
-            localStorage.setItem("gluten", JSON.stringify(data));
-            setGlutenFree(data);
-          });
-      } catch (error) {
-        console.log(error);
-      }
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1000);
+    setIsLoading(true);
+    try {
+      await axios
+        .get(
+          `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&tags=gluten+free,vegetarian&number=20`
+        )
+        .then((res) => {
+          const data = res.data.recipes;
+          setGlutenFree(data);
+        });
+    } catch (error) {
+      console.log(error);
     }
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   };
 
   useEffect(() => {

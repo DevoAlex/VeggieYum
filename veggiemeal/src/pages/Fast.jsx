@@ -11,29 +11,22 @@ function Fast() {
   const [isLoading, setIsLoading] = useState(false);
 
   const getFastRecipes = async () => {
-    const check = localStorage.getItem("fast");
-
-    if (check) {
-      setFast(JSON.parse(check));
-    } else {
-      setIsLoading(true);
-      try {
-        await axios
-          .get(
-            `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&tags=vegetarian&number=10`
-          )
-          .then((res) => {
-            const data = res.data.recipes;
-            localStorage.setItem("fast", JSON.stringify(data));
-            setFast(data);
-          });
-      } catch (error) {
-        console.log(error);
-      }
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1000);
+    setIsLoading(true);
+    try {
+      await axios
+        .get(
+          `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&tags=vegetarian&number=20`
+        )
+        .then((res) => {
+          const data = res.data.recipes;
+          setFast(data);
+        });
+    } catch (error) {
+      console.log(error);
     }
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -76,7 +69,6 @@ function Fast() {
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  
 
   @media ${device.mobileL} {
     grid-gap: 0.5rem;
@@ -119,7 +111,6 @@ const Wrapper = styled.div`
       padding-top: 1.8rem;
       padding-bottom: 1.8rem;
     }
-   
   }
 `;
 

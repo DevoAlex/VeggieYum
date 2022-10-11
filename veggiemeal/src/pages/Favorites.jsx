@@ -11,7 +11,6 @@ import { device } from "../components/device";
 function Favorites() {
   const { favRecipes } = useContext(FavoritesContext);
   const [isLoading, setIsLoading] = useState(true);
-
   const { removeFavRecipe } = useContext(FavoritesContext);
 
   useEffect(() => {
@@ -82,8 +81,6 @@ function Favorites() {
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 25rem));
-
-  
 `;
 
 const Slink = styled(Link)`

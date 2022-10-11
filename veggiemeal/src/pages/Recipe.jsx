@@ -8,7 +8,7 @@ import veganIcon from "../images/vegan-icon.png";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { FavoritesContext } from "../context/FavoritesContextProvider";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
-import {BsClock} from 'react-icons/bs'
+import { BsClock } from "react-icons/bs";
 import { device } from "../components/device";
 
 function Recipe() {
@@ -22,28 +22,22 @@ function Recipe() {
   let params = useParams();
 
   const fetchDetails = async () => {
-    const check = localStorage.getItem("recipe");
-    if (check) {
-      setDetails(JSON.parse(check));
-    } else {
-      setIsLoading(true);
-      try {
-        await axios
-          .get(
-            `https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}`
-          )
-          .then((res) => {
-            const data = res.data;
-            localStorage.setItem("recipe", JSON.stringify(data));
-            setDetails(data);
-          });
-      } catch (error) {
-        console.log(error);
-      }
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1000);
+    setIsLoading(true);
+    try {
+      await axios
+        .get(
+          `https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}`
+        )
+        .then((res) => {
+          const data = res.data;
+          setDetails(data);
+        });
+    } catch (error) {
+      console.log(error);
     }
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -51,7 +45,9 @@ function Recipe() {
   }, [params.name]);
 
   const handleFavorite = () => {
-    favorite ? removeFavRecipe(details.id) : addFavRecipe(details.id, details.title, details.image)
+    favorite
+      ? removeFavRecipe(details.id)
+      : addFavRecipe(details.id, details.title, details.image);
     setFavorite(!favorite);
   };
 
@@ -72,7 +68,7 @@ function Recipe() {
           <div>
             <h2>{details.title}</h2>
             <span>
-            <img src={details.image} alt={details.title} />
+              <img src={details.image} alt={details.title} />
             </span>
           </div>
           <IconWrapper>
@@ -94,42 +90,47 @@ function Recipe() {
               )}
             </IconImageContainer>
             <ClockContainer>
-            <div>
-            <BsClock />
-            </div>
-            <p>{details.readyInMinutes}</p>
+              <div>
+                <BsClock />
+              </div>
+              <p>{details.readyInMinutes}</p>
             </ClockContainer>
             {favorite ? (
-              <button onClick={handleFavorite} style={{ backgroundColor:'transparent' }}>
+              <button
+                onClick={handleFavorite}
+                style={{ backgroundColor: "transparent" }}
+              >
                 <MdFavorite
                   style={{ height: "1.5rem", width: "1.5rem", color: "red" }}
                 />
               </button>
             ) : (
-              <button onClick={handleFavorite} style={{ backgroundColor:'transparent' }}>
+              <button
+                onClick={handleFavorite}
+                style={{ backgroundColor: "transparent" }}
+              >
                 <MdFavoriteBorder
-                  style={{ height: "1.5rem", width: "1.5rem", color:'white' }}
+                  style={{ height: "1.5rem", width: "1.5rem", color: "white" }}
                 />
               </button>
             )}
-            
           </IconWrapper>
           <span>
-          <Button
-            className={activeTab === "ingredients" ? "active" : ""}
-            onClick={() => setActiveTab("ingredients")}
-          >
-            Ingredients
-          </Button>
-          <Button
-            className={activeTab === "instructions" ? "active" : ""}
-            onClick={() => setActiveTab("instructions")}
-          >
-            Instructions
-          </Button>
+            <Button
+              className={activeTab === "ingredients" ? "active" : ""}
+              onClick={() => setActiveTab("ingredients")}
+            >
+              Ingredients
+            </Button>
+            <Button
+              className={activeTab === "instructions" ? "active" : ""}
+              onClick={() => setActiveTab("instructions")}
+            >
+              Instructions
+            </Button>
           </span>
           {activeTab === "ingredients" ? (
-            <>
+            <InstructionsWrapper>
               <ul>
                 {details.extendedIngredients?.map((item) => {
                   return <li key={item.id}>{item.original}</li>;
@@ -137,9 +138,11 @@ function Recipe() {
               </ul>
 
               <p dangerouslySetInnerHTML={{ __html: details.summary }}></p>
-            </>
+            </InstructionsWrapper>
           ) : (
-            <p dangerouslySetInnerHTML={{ __html: details.instructions }}></p>
+            <InstructionsWrapper>
+              <p dangerouslySetInnerHTML={{ __html: details.instructions }}></p>
+            </InstructionsWrapper>
           )}
         </Wrapper>
       )}
@@ -149,10 +152,9 @@ function Recipe() {
 
 const Wrapper = styled.div`
   padding: 1rem 1rem 1rem 1rem;
-  
   color: white;
   .active {
-    background: #EF9903;
+    background: #ef9903;
     color: white;
   }
   h2 {
@@ -170,7 +172,7 @@ const Wrapper = styled.div`
   p {
     margin-top: 2rem;
     font-size: 1.1rem;
-    a{
+    a {
       text-decoration: none;
       color: orange;
     }
@@ -188,16 +190,17 @@ const Wrapper = styled.div`
     img {
       width: 80%;
     }
+  }
   @media ${device.laptop} {
     img {
       width: 60%;
     }
+  }
   @media ${device.laptopL} {
     img {
       width: 40%;
     }
   }
-}}
 `;
 
 const IconWrapper = styled.div`
@@ -211,12 +214,29 @@ const IconWrapper = styled.div`
     background: white;
     height: 1.5rem;
   }
+
+  @media ${device.tablet} {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  @media ${device.laptop} {
+    padding-left: 9rem;
+    padding-right: 9rem;
+  }
+  @media ${device.laptopL} {
+    padding-left: 15rem;
+    padding-right: 15rem;
+  }
+  @media ${device.desktop} {
+    padding-left: 20rem;
+    padding-right: 20rem;
+  }
 `;
 
 const IconImageContainer = styled.div`
   display: flex;
   gap: 0.4rem;
-  padding-left: 0.8rem; 
+  padding-left: 0.8rem;
 `;
 
 const ClockContainer = styled.div`
@@ -228,12 +248,11 @@ const ClockContainer = styled.div`
     position: relative;
     top: 18%;
   }
-  p{
+  p {
     position: relative;
     top: 5%;
   }
-  
-`
+`;
 
 const IconImage = styled.div`
   margin-top: 2rem;
@@ -258,5 +277,15 @@ const Button = styled.button`
   font-family: "Comfortaa", cursive;
 `;
 
+const InstructionsWrapper = styled.div`
+  @media ${device.tablet} {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+  @media ${device.laptopL} {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+`;
 
 export default Recipe;

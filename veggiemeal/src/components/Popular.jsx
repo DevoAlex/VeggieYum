@@ -13,30 +13,22 @@ function Popular() {
   const [isLoading, setIsLoading] = useState(false);
 
   const getPopular = async () => {
-    const check = localStorage.getItem("popular");
-
-    if (check) {
-      setPopular(JSON.parse(check));
-    } else {
-      setIsLoading(true);
-      try {
-        await axios
-          .get(
-            `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&tags=vegetarian&number=10`
-          )
-          .then((res) => {
-            const data = res.data.recipes;
-
-            localStorage.setItem("popular", JSON.stringify(data));
-            setPopular(data);
-          });
-      } catch (error) {
-        console.log(error);
-      }
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1000);
+    setIsLoading(true);
+    try {
+      await axios
+        .get(
+          `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&tags=vegetarian&number=10`
+        )
+        .then((res) => {
+          const data = res.data.recipes;
+          setPopular(data);
+        });
+    } catch (error) {
+      console.log(error);
     }
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -76,13 +68,13 @@ function Popular() {
                 perPage: 3,
               },
               1440: {
-                padding: '8%',
-                gap: '0.5em',
+                padding: "8%",
+                gap: "0.5em",
                 perPage: 4,
               },
               2560: {
                 perPage: 7,
-                padding: '-10%',
+                padding: "-10%",
               },
             },
           }}
@@ -164,6 +156,6 @@ const PopularTitle = styled.h3`
     margin-left: 1.5rem;
     font-size: 1.3rem;
   }
-`
+`;
 
 export default Popular;

@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# VeggieYum :broccoli:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Are you searching for your next veggie recipe idea? <br>
+On VeggieYum you can find thousands of recipes and thy are all vegetarian!
 
-## Available Scripts
+## :question: Why
 
-In the project directory, you can run:
+This project is the final practice for start2impact React.js course.<br>
 
-### `npm start`
+## :bulb: How it works
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+You can pick a recipe from the "popular recipes" or you can search for a recipe typing a keyword in the searchbar.<br>
+If you open the sidebar you can find some categories of food as well as the favorite panel, where you can find all the recipes you have previously saved.<br>
+For every recipe you can find the ingredients tab and the instruction tab.<br>
+No subscription required!\*
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+`*uses LocalStorage, resetting browser data will make your saved recipes disappear.`
 
-### `npm test`
+## :computer: Languages
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- HTML5
+- CSS3
+- Javascript ES6
 
-### `npm run build`
+## :books: Libraries
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [React.js](https://it.reactjs.org/)
+- [React Router](https://reactrouter.com/en/main)
+- [Axios](https://axios-http.com/)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [React Splide](https://splidejs.com/)
+- [Styled Components](https://styled-components.com/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## :globe_with_meridians: External Services
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [Spoonacular API](https://spoonacular.com/food-api)
 
-### `npm run eject`
+## :floppy_disk: Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+First of all, you need Node.js installed.
+If you don't have it, you can download it here:
+[Node.js](https://nodejs.org/it/download/)
+After the installation, you're ready to go.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 1 - Clone the repository
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+`git clone https://github.com/cristopherturazza/S2I-React/tree/main/vegandthecity`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 2 - Install the dependencies
 
-## Learn More
+`npm install`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 3 - Build it!
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`npm run build`
 
-### Code Splitting
+### 4 - Open in the browser
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Check out for index.html in the /build folder.
 
-### Analyzing the Bundle Size
+## :zap: Try it!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## :page_with_curl: License
 
-### Making a Progressive Web App
+[MIT](https://choosealicense.com/licenses/mit/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## :e-mail: Contact Me
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Any questions? Send me an e-mail here: alexpeluso.dev@gmail.com <br>
+You can also get in touch with me through my [Linkedin]https://www.linkedin.com/in/alex-peluso-a42347227/

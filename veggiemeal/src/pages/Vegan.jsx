@@ -11,29 +11,22 @@ function Vegan() {
   const [isLoading, setIsLoading] = useState(false);
 
   const getVegan = async () => {
-    const check = localStorage.getItem("vegan");
-
-    if (check) {
-      setVegan(JSON.parse(check));
-    } else {
-      setIsLoading(true);
-      try {
-        await axios
-          .get(
-            `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&tags=vegan&number=10`
-          )
-          .then((res) => {
-            const data = res.data.recipes;
-            localStorage.setItem("vegan", JSON.stringify(data));
-            setVegan(data);
-          });
-      } catch (error) {
-        console.log(error);
-      }
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1000);
+    setIsLoading(true);
+    try {
+      await axios
+        .get(
+          `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&tags=vegan&number=20`
+        )
+        .then((res) => {
+          const data = res.data.recipes;
+          setVegan(data);
+        });
+    } catch (error) {
+      console.log(error);
     }
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   };
 
   useEffect(() => {

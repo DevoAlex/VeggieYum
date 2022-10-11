@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Searchbar from "../components/Searchbar";
 import Hero from "../components/Hero";
 import backgroundImage from '../images/spicy-bg.jpg'
+import { device } from "../components/device";
 
 function Home() {
   return (
@@ -24,6 +25,11 @@ const Wrapper = styled.div`
   background: url(${backgroundImage}) no-repeat fixed;
   background-position: top;
   background-size: 35rem;
+
+  @media ${device.mobileL} {
+    background: url(${backgroundImage}) no-repeat center fixed;
+    background-size: cover;
+  }
 `;
 
 export default Home;
