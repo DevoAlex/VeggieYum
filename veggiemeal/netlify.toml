@@ -2,12 +2,12 @@
     from = "/*"
     to = "/index.html"
     status = 200
-    redirectsOrigin = config
+    redirectsOrigin = "config"
 
     [[build]]
-        base = /opt/build/repo/veggiemeal
-        command = npm run build
-        commandOrigin = ui
-        environment = REACT_APP_API_KEY
-        publish = /opt/build/repo/veggiemeal/build
-        publishOrigin = ui
+        base = "/opt/build/repo/veggiemeal"
+        command = "npm run build"
+        commandOrigin = "ui"
+        environment = "REACT_APP_API_KEY"
+        publish = "/opt/build/repo/veggiemeal/build"
+        publishOrigin = "ui"
