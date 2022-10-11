@@ -50,11 +50,15 @@ After the installation, you're ready to go.
 
 `npm install`
 
-### 3 - Build it!
+### 3 - Replace the API key!
+
+Replace the key in `.env.example` with your personal API key and rename the file `.env`
+
+### 4 - Build it!
 
 `npm run build`
 
-### 4 - Open in the browser
+### 5 - Open in the browser
 
 Check out for index.html in the /build folder.
 
