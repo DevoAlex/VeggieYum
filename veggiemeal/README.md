@@ -67,4 +67,4 @@ Check out for index.html in the /build folder.
 ## :e-mail: Contact Me
 
 Any questions? Send me an e-mail here: alexpeluso.dev@gmail.com <br>
-You can also get in touch with me through my [Linkedin]https://www.linkedin.com/in/alex-peluso-a42347227/
+You can also get in touch with me through my [Linkedin](https://www.linkedin.com/in/alex-peluso-a42347227/).
