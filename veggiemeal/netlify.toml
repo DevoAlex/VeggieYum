@@ -9,5 +9,5 @@
         command = "npm run build"
         commandOrigin = "ui"
         environment = "REACT_APP_API_KEY"
-        publish = "/build"
+        publish = "/public"
         publishOrigin = "ui"
