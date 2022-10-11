@@ -5,9 +5,9 @@
     redirectsOrigin = "config"
 
     [build]
-        base = "/opt/build/repo/veggiemeal"
+        base = "/veggiemeal"
         command = "npm run build"
         commandOrigin = "ui"
         environment = "REACT_APP_API_KEY"
-        publish = "/opt/build/repo/veggiemeal/build"
+        publish = "/veggiemeal/build"
         publishOrigin = "ui"
