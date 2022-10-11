@@ -4,7 +4,7 @@
     status = 200
     redirectsOrigin = "config"
 
-    [[build]]
+    [build]
         base = "/opt/build/repo/veggiemeal"
         command = "npm run build"
         commandOrigin = "ui"
