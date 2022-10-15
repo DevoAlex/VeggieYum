@@ -7,7 +7,7 @@ On VeggieYum you can find thousands of recipes and thy are all vegetarian!
 
 This project is the final practice for start2impact React.js course.<br>
 
-## :bulb: How it works
+## :bulb: How it workss
 
 You can pick a recipe from the "popular recipes" or you can search for a recipe typing a keyword in the searchbar.<br>
 If you open the sidebar you can find some categories of food as well as the favorite panel, where you can find all the recipes you have previously saved.<br>
