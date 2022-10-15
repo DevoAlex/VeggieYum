@@ -1,0 +1,27 @@
+{
+    "icons": [
+      {
+        "src": "favicon.ico",
+        "sizes": "64x64 32x32 24x24 16x16",
+        "type": "image/x-icon"
+      }
+    ],
+  "files": {
+    "main.css": "/static/css/main.7bc493ee.css",
+    "main.js": "/static/js/main.c0dbf083.js",
+    "static/media/spicy-bg.jpg": "/static/media/spicy-bg.345c5eb6b3b57302b88e.jpg",
+    "static/media/instagram-icon.png": "/static/media/instagram-icon.650c5954be88c41ea944.png",
+    "static/media/github-icon.png": "/static/media/github-icon.9189d06bc522aa200f41.png",
+    "static/media/vegan-icon.png": "/static/media/vegan-icon.6fa35a94a7cf953e1be7.png",
+    "static/media/dairy-icon.png": "/static/media/dairy-icon.aa363814876349680998.png",
+    "static/media/gluten-icon.png": "/static/media/gluten-icon.d9ded9a143a2000292f6.png",
+    "static/media/linkedin-icon.png": "/static/media/linkedin-icon.1dd143a731afb245bf24.png",
+    "index.html": "/index.html",
+    "main.7bc493ee.css.map": "/static/css/main.7bc493ee.css.map",
+    "main.c0dbf083.js.map": "/static/js/main.c0dbf083.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7bc493ee.css",
+    "static/js/main.c0dbf083.js"
+  ]
+}
