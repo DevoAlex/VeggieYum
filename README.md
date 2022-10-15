@@ -44,7 +44,7 @@ After the installation, you're ready to go.
 
 ### 1 - Clone the repository
 
-`git clone https://github.com/cristopherturazza/S2I-React/tree/main/vegandthecity`
+`git clone https://github.com/DevoAlex/VeggieYum/tree/main/`
 
 ### 2 - Install the dependencies
 
