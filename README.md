@@ -44,7 +44,7 @@ After the installation, you're ready to go.
 
 ### 1 - Clone the repository
 
-`git clone https://github.com/DevoAlex/VeggieYum/tree/main/`
+`git clone https://github.com/DevoAlex/VeggieYum.git`
 
 ### 2 - Install the dependencies
 
