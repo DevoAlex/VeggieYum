@@ -47,6 +47,14 @@ const SocialWrapper = styled.div`
   img {
     width: 2.3rem;
     height: 2.3rem;
+    transition: transform 0.3s;
+
+  :hover {
+    transform: scale(1.2, 1.2);
+  }
+  :active {
+    transform: scale(0.9, 0.9)
+  }
   }
 `;
 

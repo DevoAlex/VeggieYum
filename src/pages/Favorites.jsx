@@ -105,6 +105,15 @@ const EmptyFavorite = styled.div`
     gap: 2rem;
     background: linear-gradient(35deg, #494949, #313131);
     color: white;
+    transition: transform 0.2s;
+
+    :hover {
+      transform: scale(1.1, 1.1);
+    }
+    :active {
+      transform: scale(0.9, 0.9);
+    }
+
     h5 {
       font-weight: 400;
     }
@@ -143,7 +152,7 @@ const Button = styled.button`
   border: none;
   color: white;
   cursor: pointer;
-  transition: color 0.5s;
+  transition: color 0.3s;
 
   :hover {
     color: orange;
@@ -168,11 +177,15 @@ const Card = styled.div`
   border-radius: 1rem;
   margin-top: 1.5rem;
   padding: 1rem 2rem 0rem 2rem;
-  transition: transform 0.5s;
+  transition: transform 0.3s;
 
   :hover {
     transform: scale(1.1, 1.1);
   }
+  :active {
+    transform: scale(0.9, 0.9)
+  }
+  
   img {
     width: 100%;
     border-radius: 0.8rem;

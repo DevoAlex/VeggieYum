@@ -92,10 +92,13 @@ const Slink = styled(Link)`
   color: white;
   text-decoration: none;
   padding: 1rem 2rem 0rem 2rem;
-  transition: transform 0.5s;
+  transition: transform 0.3s;
 
   :hover {
     transform: scale(1.1, 1.1);
+  }
+  :active {
+    transform: scale(0.9, 0.9)
   }
 `;
 
