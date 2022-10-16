@@ -98,7 +98,7 @@ function Recipe() {
             {favorite ? (
               <button
                 onClick={handleFavorite}
-                style={{ backgroundColor: "transparent" }}
+                
               >
                 <MdFavorite
                   style={{ height: "1.5rem", width: "1.5rem", color: "red" }}
@@ -107,7 +107,7 @@ function Recipe() {
             ) : (
               <button
                 onClick={handleFavorite}
-                style={{ backgroundColor: "transparent" }}
+                
               >
                 <MdFavoriteBorder
                   style={{ height: "1.5rem", width: "1.5rem", color: "white" }}
@@ -211,8 +211,17 @@ const IconWrapper = styled.div`
     margin-top: 2rem;
     cursor: pointer;
     border: none;
-    background: white;
-    height: 1.5rem;
+    background-color: transparent;
+    height: 2rem;
+    width: 2rem;
+    transition: transform 0.2s;
+
+    :hover {
+      transform: scale(1.4, 1.4);
+    }
+    :active {
+      transform: scale(1.1, 1.1);
+    }
   }
 
   @media ${device.tablet} {
@@ -275,6 +284,15 @@ const Button = styled.button`
   font-weight: 600;
   border-radius: 0.3rem;
   font-family: "Comfortaa", cursive;
+  cursor: pointer;
+  transition: transform 0.3s;
+
+  :hover {
+    transform: scale(1.15, 1.15);
+  }
+  :active {
+      transform: scale(1, 1);
+    }
 `;
 
 const InstructionsWrapper = styled.div`

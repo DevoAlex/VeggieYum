@@ -143,6 +143,11 @@ const Button = styled.button`
   border: none;
   color: white;
   cursor: pointer;
+  transition: color 0.5s;
+
+  :hover {
+    color: orange;
+  }
 `;
 
 const TrashWrapper = styled.div`
@@ -162,6 +167,12 @@ const Card = styled.div`
   margin: 1rem;
   border-radius: 1rem;
   margin-top: 1.5rem;
+  padding: 1rem 2rem 0rem 2rem;
+  transition: transform 0.5s;
+
+  :hover {
+    transform: scale(1.1, 1.1);
+  }
   img {
     width: 100%;
     border-radius: 0.8rem;

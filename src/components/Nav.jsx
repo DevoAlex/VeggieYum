@@ -161,7 +161,12 @@ const Bars = styled(FaBars)`
   color: white;
   cursor: pointer;
   text-align: center;
-  padding-left: 1.5rem;
+  margin-left: 1.5rem;
+  transition: transform 0.5s;
+
+  :hover {
+    transform: scale(1.2, 1.2);
+  }
 `;
 
 const Slink = styled(Link)`
@@ -171,10 +176,17 @@ const Slink = styled(Link)`
   margin-left: 1rem;
   text-decoration: none;
   color: white;
+  transition: transform 0.5s, margin-left 0.5s, color 0.5s;
   img {
     width: 1.2rem;
     height: 1.2rem;
   }
+  :hover {
+    transform: scale(1.13, 1.13);
+    margin-left: 1.8rem;
+    color: #ef9903;
+  }
+  
 
   @media ${device.tablet} {
     margin-left: 1.5rem;

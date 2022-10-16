@@ -6,7 +6,6 @@ import axios from "axios";
 import LoadingSpinner from "./LoadingSpinner";
 import { Link } from "react-router-dom";
 import { device } from "./device";
-import { MdInbox } from "react-icons/md";
 
 function Popular() {
   const [popular, setPopular] = useState([]);

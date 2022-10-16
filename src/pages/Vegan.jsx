@@ -91,7 +91,12 @@ const Card = styled.div`
 const Slink = styled(Link)`
   color: white;
   text-decoration: none;
-  padding: 1rem 1rem 0rem 1rem;
+  padding: 1rem 2rem 0rem 2rem;
+  transition: transform 0.5s;
+
+  :hover {
+    transform: scale(1.1, 1.1);
+  }
 `;
 
 const Wrapper = styled.div`
