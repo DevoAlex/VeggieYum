@@ -41,3 +41,10 @@ export const getPopularRecipes = async () => {
   );
   return popularRecipes.data.recipes;
 };
+
+// export const getRecipeInfo = async (id) => {
+//   let recipeInfo = await axios.get(
+//     `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY}`
+//   );
+//   return recipeInfo.data;
+// };

@@ -6,8 +6,8 @@ const FavoritesContextProvider = (props) => {
   const [favRecipes, setFavRecipes] = useState([]);
 
   //add favorite recipe function
-  const addFavRecipe = (id, title, image) => {
-    setFavRecipes([...favRecipes, { id, title, image }]);
+  const addFavRecipe = (id) => {
+    setFavRecipes([...favRecipes, { id }]);
   };
 
   //remove favorite recipe function

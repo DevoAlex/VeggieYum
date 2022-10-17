@@ -7,11 +7,13 @@ import { BiChevronsLeft } from "react-icons/bi";
 import { FaTrashAlt } from "react-icons/fa";
 import Searchbar from "../components/Searchbar";
 import { device } from "../components/device";
+import { fetchDetails } from "../components/clientAPI";
 
 function Favorites() {
   const { favRecipes } = useContext(FavoritesContext);
   const [isLoading, setIsLoading] = useState(true);
   const { removeFavRecipe } = useContext(FavoritesContext);
+  const [favDetails, setFavDetails] = useState([])
 
   useEffect(() => {
     setIsLoading(true);
@@ -34,16 +36,17 @@ function Favorites() {
           <h2>Favorite recipes</h2>
           <Grid>
             {favRecipes.map((item) => {
+              fetchDetails(item.id).then(response => setFavDetails(response))
               return (
-                <Card key={item.id}>
-                  <Slink to={"/recipe/" + item.id}>
-                    <img src={item.image} alt={item.title} />
+                <Card key={favDetails.id}>
+                  <Slink to={"/recipe/" + favDetails.id}>
+                    <img src={favDetails.image} alt={favDetails.title} />
                   </Slink>
                   <TrashWrapper>
-                    <h4>{item.title}</h4>
+                    <h4>{favDetails.title}</h4>
                     <Button
                       onClick={() => {
-                        removeFavRecipe(item.id);
+                        removeFavRecipe(favDetails.id);
                       }}
                     >
                       <FaTrashAlt style={{ height: "1rem", width: "1rem" }} />
