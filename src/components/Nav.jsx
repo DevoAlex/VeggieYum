@@ -176,17 +176,16 @@ const Slink = styled(Link)`
   margin-left: 1rem;
   text-decoration: none;
   color: white;
-  transition: transform 0.5s, margin-left 0.5s, color 0.5s;
+  transition: transform 0.2s, margin-left 0.2s, color 0.3s;
   img {
     width: 1.2rem;
     height: 1.2rem;
   }
   :hover {
     transform: scale(1.13, 1.13);
-    margin-left: 1.8rem;
+    margin-left: 3rem;
     color: #ef9903;
   }
-  
 
   @media ${device.tablet} {
     margin-left: 1.5rem;

@@ -35,8 +35,8 @@ function Favorites() {
           <Grid>
             {favRecipes.map((item) => {
               return (
-                <Card>
-                  <Slink to={"/recipe/" + item.id} key={item.id}>
+                <Card key={item.id}>
+                  <Slink to={"/recipe/" + item.id}>
                     <img src={item.image} alt={item.title} />
                   </Slink>
                   <TrashWrapper>
@@ -182,10 +182,7 @@ const Card = styled.div`
   :hover {
     transform: scale(1.1, 1.1);
   }
-  :active {
-    transform: scale(0.9, 0.9)
-  }
-  
+
   img {
     width: 100%;
     border-radius: 0.8rem;

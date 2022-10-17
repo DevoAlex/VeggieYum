@@ -5,32 +5,22 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { Link } from "react-router-dom";
 import Searchbar from "../components/Searchbar";
 import { device } from "../components/device";
+import { getGlutenFreeRecipes } from "../components/clientAPI";
 
 function GlutenFree() {
   const [glutenFree, setGlutenFree] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const getGluten = async () => {
+  useEffect(() => {
     setIsLoading(true);
     try {
-      await axios
-        .get(
-          `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&tags=gluten+free,vegetarian&number=20`
-        )
-        .then((res) => {
-          const data = res.data.recipes;
-          setGlutenFree(data);
-        });
+      getGlutenFreeRecipes().then((response) => setGlutenFree(response));
     } catch (error) {
       console.log(error);
     }
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
-  };
-
-  useEffect(() => {
-    getGluten();
   }, []);
 
   return (
@@ -117,7 +107,7 @@ const Slink = styled(Link)`
     transform: scale(1.1, 1.1);
   }
   :active {
-    transform: scale(0.9, 0.9)
+    transform: scale(0.9, 0.9);
   }
 `;
 

@@ -10,6 +10,7 @@ import { FavoritesContext } from "../context/FavoritesContextProvider";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { BsClock } from "react-icons/bs";
 import { device } from "../components/device";
+import { fetchDetails } from "../components/clientAPI";
 
 function Recipe() {
   const [details, setDetails] = useState({});
@@ -21,27 +22,16 @@ function Recipe() {
 
   let params = useParams();
 
-  const fetchDetails = async () => {
+  useEffect(() => {
     setIsLoading(true);
     try {
-      await axios
-        .get(
-          `https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}`
-        )
-        .then((res) => {
-          const data = res.data;
-          setDetails(data);
-        });
+      fetchDetails(params.name).then((response) => setDetails(response));
     } catch (error) {
       console.log(error);
     }
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
-  };
-
-  useEffect(() => {
-    fetchDetails();
   }, [params.name]);
 
   const handleFavorite = () => {
@@ -96,19 +86,13 @@ function Recipe() {
               <p>{details.readyInMinutes}</p>
             </ClockContainer>
             {favorite ? (
-              <button
-                onClick={handleFavorite}
-                
-              >
+              <button onClick={handleFavorite}>
                 <MdFavorite
                   style={{ height: "1.5rem", width: "1.5rem", color: "red" }}
                 />
               </button>
             ) : (
-              <button
-                onClick={handleFavorite}
-                
-              >
+              <button onClick={handleFavorite}>
                 <MdFavoriteBorder
                   style={{ height: "1.5rem", width: "1.5rem", color: "white" }}
                 />
@@ -291,8 +275,8 @@ const Button = styled.button`
     transform: scale(1.15, 1.15);
   }
   :active {
-      transform: scale(1, 1);
-    }
+    transform: scale(1, 1);
+  }
 `;
 
 const InstructionsWrapper = styled.div`

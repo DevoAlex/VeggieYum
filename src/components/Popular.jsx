@@ -6,32 +6,22 @@ import axios from "axios";
 import LoadingSpinner from "./LoadingSpinner";
 import { Link } from "react-router-dom";
 import { device } from "./device";
+import { getPopularRecipes } from "./clientAPI";
 
 function Popular() {
   const [popular, setPopular] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const getPopular = async () => {
+  useEffect(() => {
     setIsLoading(true);
     try {
-      await axios
-        .get(
-          `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&tags=vegetarian&number=10`
-        )
-        .then((res) => {
-          const data = res.data.recipes;
-          setPopular(data);
-        });
+      getPopularRecipes().then((response) => setPopular(response));
     } catch (error) {
       console.log(error);
     }
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
-  };
-
-  useEffect(() => {
-    getPopular();
   }, []);
 
   return (

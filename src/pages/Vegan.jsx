@@ -5,32 +5,22 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { Link } from "react-router-dom";
 import Searchbar from "../components/Searchbar";
 import { device } from "../components/device";
+import { getVeganRecipes } from "../components/clientAPI";
 
 function Vegan() {
   const [vegan, setVegan] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const getVegan = async () => {
+  useEffect(() => {
     setIsLoading(true);
     try {
-      await axios
-        .get(
-          `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&tags=vegan&number=20`
-        )
-        .then((res) => {
-          const data = res.data.recipes;
-          setVegan(data);
-        });
+      getVeganRecipes().then((response) => setVegan(response));
     } catch (error) {
       console.log(error);
     }
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
-  };
-
-  useEffect(() => {
-    getVegan();
   }, []);
 
   return (
@@ -98,7 +88,7 @@ const Slink = styled(Link)`
     transform: scale(1.1, 1.1);
   }
   :active {
-    transform: scale(0.9, 0.9)
+    transform: scale(0.9, 0.9);
   }
 `;
 

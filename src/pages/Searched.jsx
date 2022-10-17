@@ -6,32 +6,25 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { Link } from "react-router-dom";
 import Searchbar from "../components/Searchbar";
 import { device } from "../components/device";
+import { getSearched } from "../components/clientAPI";
 
 function Searched() {
   const [searchedRecipes, setSearchedRecipes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   let params = useParams();
 
-  const getSearched = async (name) => {
+  useEffect(() => {
     setIsLoading(true);
     try {
-      await axios
-        .get(
-          `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}&number=20`
-        )
-        .then((res) => {
-          setSearchedRecipes(res.data.results);
-        });
+      getSearched(params.search).then((response) =>
+        setSearchedRecipes(response)
+      );
     } catch (error) {
       console.log(error);
     }
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
-  };
-
-  useEffect(() => {
-    getSearched(params.search);
   }, [params.search]);
 
   return (
@@ -118,7 +111,7 @@ const Slink = styled(Link)`
     transform: scale(1.1, 1.1);
   }
   :active {
-    transform: scale(0.9, 0.9)
+    transform: scale(0.9, 0.9);
   }
 `;
 
