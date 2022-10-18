@@ -25,7 +25,7 @@ function Pages() {
 
 function NotFound() {
   return (
-    <h4 style={{ padding: "2rem" }}>
+    <h4 style={{ padding: "2rem", color: "white"}}>
       You have landed on a page that doesn't exist
     </h4>
   );
