@@ -1,7 +1,6 @@
 import { React, useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import glutenIcon from "../images/gluten-icon.png";
 import dairyIcon from "../images/dairy-icon.png";
 import veganIcon from "../images/vegan-icon.png";
@@ -280,6 +279,9 @@ const Button = styled.button`
 `;
 
 const InstructionsWrapper = styled.div`
+  letter-spacing: 0.1rem;
+  word-spacing: 0.1rem;
+  line-height: 1.5rem;
   @media ${device.tablet} {
     padding-left: 2.5rem;
     padding-right: 2.5rem;

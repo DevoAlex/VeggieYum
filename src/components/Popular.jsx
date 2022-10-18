@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css/skyblue";
-import axios from "axios";
 import LoadingSpinner from "./LoadingSpinner";
 import { Link } from "react-router-dom";
 import { device } from "./device";

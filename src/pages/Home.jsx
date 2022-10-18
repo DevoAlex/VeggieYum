@@ -3,18 +3,17 @@ import Popular from "../components/Popular";
 import styled from "styled-components";
 import Searchbar from "../components/Searchbar";
 import Hero from "../components/Hero";
-import backgroundImage from '../images/spicy-bg.jpg'
+import backgroundImage from "../images/spicy-bg.jpg";
 import { device } from "../components/device";
 
 function Home() {
   return (
     <>
       <Wrapper>
-      <Hero />
+        <Hero />
         <Searchbar />
       </Wrapper>
       <Popular />
-      
     </>
   );
 }

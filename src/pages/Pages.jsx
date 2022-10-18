@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Fast from "./Fast";
 import Home from "./Home";
-import Favorites from './Favorites'
+import Favorites from "./Favorites";
 import Vegan from "./Vegan";
 import GlutenFree from "./GlutenFree";
 import Searched from "./Searched";
@@ -24,7 +24,11 @@ function Pages() {
 }
 
 function NotFound() {
-  return <h4 style={{padding: '2rem'}}>You have landed on a page that doesn't exist</h4>;
+  return (
+    <h4 style={{ padding: "2rem" }}>
+      You have landed on a page that doesn't exist
+    </h4>
+  );
 }
 
 export default Pages;
