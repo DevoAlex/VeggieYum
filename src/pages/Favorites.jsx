@@ -13,7 +13,7 @@ function Favorites() {
   const { favRecipes } = useContext(FavoritesContext);
   const [isLoading, setIsLoading] = useState(true);
   const { removeFavRecipe } = useContext(FavoritesContext);
-  const [favDetails, setFavDetails] = useState([])
+  const [favDetails, setFavDetails] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -21,6 +21,23 @@ function Favorites() {
       setIsLoading(false);
     }, 500);
   }, []);
+
+  useEffect(() => {
+    favRecipes.map((item) => {
+      fetchDetails(item.id).then((res) => {
+        setFavDetails((prevState) => [
+          ...prevState,
+          { id: res.id, title: res.title, image: res.image },
+        ]);
+
+        console.log(favDetails);
+      });
+    });
+  }, []);
+
+  const handleRemove = (id) => {
+    setFavDetails(favDetails.filter((recipe) => recipe.id !== id));
+  };
 
   return (
     <>
@@ -35,18 +52,18 @@ function Favorites() {
           <Searchbar />
           <h2>Favorite recipes</h2>
           <Grid>
-            {favRecipes.map((item) => {
-              fetchDetails(item.id).then(response => setFavDetails(response))
+            {favDetails?.map((item) => {
               return (
-                <Card key={favDetails.id}>
-                  <Slink to={"/recipe/" + favDetails.id}>
-                    <img src={favDetails.image} alt={favDetails.title} />
+                <Card key={item.id}>
+                  <Slink to={"/recipe/" + item.id}>
+                    <img src={item.image} alt={item.title} />
                   </Slink>
                   <TrashWrapper>
-                    <h4>{favDetails.title}</h4>
+                    <h4>{item.title}</h4>
                     <Button
                       onClick={() => {
-                        removeFavRecipe(favDetails.id);
+                        removeFavRecipe(item.id);
+                        handleRemove(item.id);
                       }}
                     >
                       <FaTrashAlt style={{ height: "1rem", width: "1rem" }} />
@@ -55,6 +72,7 @@ function Favorites() {
                 </Card>
               );
             })}
+            )
           </Grid>
         </Wrapper>
       )}
