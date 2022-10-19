@@ -19,18 +19,16 @@ function Favorites() {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 1000);
   }, []);
 
   useEffect(() => {
     favRecipes.map((item) => {
       fetchDetails(item.id).then((res) => {
-        setFavDetails((prevState) => [
-          ...prevState,
+        setFavDetails((favDetails) => [
+          ...favDetails,
           { id: res.id, title: res.title, image: res.image },
         ]);
-
-        console.log(favDetails);
       });
     });
   }, []);
