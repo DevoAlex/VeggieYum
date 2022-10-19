@@ -70,7 +70,6 @@ function Favorites() {
                 </Card>
               );
             })}
-            )
           </Grid>
         </Wrapper>
       )}
